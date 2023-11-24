@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
+import CustomNavbar from '@/components/Navbar'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -16,8 +17,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <main className='max-w-[1024px] mx-auto pb-4'>
+      
+      <body className={`${inter.className} bg-appBgColor min-h-screen`}>
+        <CustomNavbar />
+        <main className='max-w-[1024px] mx-auto py-4'>
           {children}
         </main>
       </body>
