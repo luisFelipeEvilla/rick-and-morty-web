@@ -1,12 +1,14 @@
 import axios from "axios";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export async function GET() {
+export async function GET(req: NextRequest) {
+  const page = req.nextUrl.searchParams.get('page') || 1;
+
   try {
     const response = await axios.post('http://localhost:3000/graphql', {
       query: `
             query {
-                charactersBySpecies(species: "Human", page: 1, limit: 5) {
+                charactersBySpecies(species: "Human", page: ${page}, limit: 5) {
                   info {
                     count
                     pages
