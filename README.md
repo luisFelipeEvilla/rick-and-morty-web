@@ -1,7 +1,29 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Rick And Morty Web
+
+## Technologies
+
+1. Nextjs 14.0
+2. TailwindCss
+3. MaterialUI
+4. NextUI
 
 ## Getting Started
 
+## API
+You will need to have the backend API running. [check here](https://github.com/luisFelipeEvilla/rick-and-morty-api)
+
+### Setup
+
+## Enviroment Variables
+Before run this project, you will need to create `.env` file in the root directory or set manually the following variables
+
+```
+# This it's the api url where you are going to make the request
+API_BASE_URL=localhost:3000/graphql 
+```
+
+
+### Development
 First, run the development server:
 
 ```bash
