@@ -1,25 +1,45 @@
-import React from "react";
-import {Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, DropdownItem, DropdownTrigger, Dropdown, DropdownMenu, Avatar} from "@nextui-org/react";
+"use client";
+import React, { useState } from "react";
+import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, DropdownItem, DropdownTrigger, Dropdown, DropdownMenu, Avatar, NavbarMenuToggle, NavbarMenu, NavbarMenuItem } from "@nextui-org/react";
+import { GitHub, Check } from "@mui/icons-material";
 
 export default function App() {
+  const [isMenuOpen, setisMenuOpen] = useState(false);
+
+  const links = [
+    {
+      name: "Github",
+      icon: <GitHub />,
+      href: "https://github.com/luisFelipeEvilla/rick-and-morty-web"
+    },
+    {
+      name: "Oficial API",
+      icon: <Check />,
+      href: "https://rickandmortyapi.com/"
+    }
+  ]
   return (
     <Navbar isBordered>
-      <NavbarBrand>
-        {/* <AcmeLogo /> */}
-        <p className="font-bold text-inherit">Rick And Morty</p>
-      </NavbarBrand>
+      <NavbarContent>
+        <NavbarMenuToggle
+          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+          className="sm:hidden"
+        />
+        <NavbarBrand>
+
+          {/* <AcmeLogo /> */}
+          <p className="font-bold text-inherit">Rick And Morty</p>
+        </NavbarBrand>
+
+      </NavbarContent>
 
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
-        <NavbarItem>
-          <Link color="foreground" href="https://github.com/luisFelipeEvilla/rick-and-morty-web" target="_blank">
-            Github
-          </Link>
-        </NavbarItem>
-        <NavbarItem>
-          <Link color="foreground" href="https://rickandmortyapi.com/" target="_blank">
-            Oficial API
-          </Link>
-        </NavbarItem>
+        {
+          links.map((link, index) => (
+            <NavbarLink key={index} {...link} />
+          ))
+        }
+
       </NavbarContent>
 
       <NavbarContent as="div" justify="end">
@@ -52,6 +72,38 @@ export default function App() {
           </DropdownMenu>
         </Dropdown>
       </NavbarContent>
+
+      <NavbarMenu>
+        {
+          links.map((link, index) => (
+            <NavbarLink key={index} {...link} />
+          ))
+        }
+      </NavbarMenu>
     </Navbar>
   );
+}
+
+function NavbarLink(props: { name: string; icon: React.ReactNode; href: string }) {
+  return (
+    <NavbarItem className="hover:scale-105">
+      <Link className="flex gap-2 items-center" color="foreground" href={props.href} target="_blank">
+        {props.icon}
+
+        <p>{props.name}</p>
+      </Link>
+    </NavbarItem>
+  )
+}
+
+function NavbarMenuLink(props: { name: string; icon: React.ReactNode; href: string }) {
+  return (
+    <NavbarMenuItem className="hover:scale-105">
+      <Link className="flex gap-2 items-center" color="foreground" href={props.href} target="_blank">
+        {props.icon}
+
+        <p>{props.name}</p>
+      </Link>
+    </NavbarMenuItem>
+  )
 }
