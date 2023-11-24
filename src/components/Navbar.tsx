@@ -11,18 +11,13 @@ export default function App() {
 
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
         <NavbarItem>
-          <Link color="foreground" href="#">
-            Features
-          </Link>
-        </NavbarItem>
-        <NavbarItem isActive>
-          <Link href="#" aria-current="page" color="secondary">
-            Customers
+          <Link color="foreground" href="https://github.com/luisFelipeEvilla/rick-and-morty-web" target="_blank">
+            Github
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link color="foreground" href="#">
-            Integrations
+          <Link color="foreground" href="https://rickandmortyapi.com/" target="_blank">
+            Oficial API
           </Link>
         </NavbarItem>
       </NavbarContent>
