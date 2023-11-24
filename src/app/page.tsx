@@ -35,20 +35,18 @@ export default function CharacterList() {
     <div>
       <div className='flex flex-col gap-4'>
         {
-          loading ?
-            <p>loading...</p>
-            :
             <div className='flex flex-col items-center justify-center md:flex-row gap-8 flex-wrap'>
               {
+                loading ? 
+                  Array.from(Array(20).keys()).map((_, index) => (
+                    <CharacterCard key={index} loading={true} />
+                  ))
+                :
                 characters.map((character) => (
                   <CharacterCard
                     key={character.id}
-                    id={character.id}
-                    name={character.name}
-                    species={character.species}
-                    status={character.status}
-                    image={character.image}
-                    gender={character.gender}
+                    character={character}
+                    loading={false}
                   />
                 ))}
             </div>
